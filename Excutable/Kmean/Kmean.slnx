@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Kmean/Kmean.vcxproj" Id="653b9893-74a8-4a03-b5f9-7b08b098f57a" />
+</Solution>

@@ -1,0 +1,103 @@
+// Kmean.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <random>
+#include <chrono>
+
+#define pb push_back
+#define ll long long
+
+using namespace std;
+
+const ll oo = 1e18l + 7;
+const ll range = 1e8l + 7;
+
+struct Point {
+    long double x, y, z;
+    int tag;
+
+    long double dd;
+};
+
+vector<Point> points;
+vector<Point> cen;
+
+random_device rd;
+const int cennum=10;
+
+void preproc()
+{
+    system("D:/Work/learningmachine/NumRecog/DataBaker/x64/Debug/DataBaker.exe");
+    system("D:/Work/learningmachine/NumRecog/ImgReader/x64/Debug/ImgReader.exe");
+}
+
+int Rand()
+{
+    mt19937 rand(rd());
+    return rand() % (range * 2) - range;
+}
+
+void proc()
+{
+    ifstream cin("D:/Work/learningmachine/NumRecog/imgset/number_input/inp.inp");
+    ofstream cout("D:/Work/learningmachine/NumRecog/imgset/cluster.txt");
+
+    long double a[3];
+    ll d = 0, num = 0, s;
+    while (cin >> s)
+    {
+        s = d = num = 0;
+        for (int i = 1; i < 9; i++)
+        {
+            if (i % 3 == 0) a[d++] = s, s = 0;
+            cin >> num;
+            s = s * 7000 + num;
+        }
+        a[d] = s;
+        points.pb({ a[0],a[1],a[2],-1,0 });
+    }
+
+    for (int i = 0; i < cennum; i++)
+    {
+        long double xx = Rand(), yy = Rand(), zz = Rand();
+        cen.pb({ xx,yy,zz,0,0 });
+    }
+
+    for (int i = 1; i <= 1000; i++)
+    {
+        for (Point& zz : points) zz.dd = oo;
+        for (Point& p : points)
+        {
+            for (int j = 0; j < cennum; j++)
+            {
+                long double dist = (p.x - cen[j].x) * (p.x - cen[j].x) +
+                    (p.y - cen[j].y) * (p.y - cen[j].y) +
+                    (p.z - cen[j].z) * (p.z - cen[j].z);
+                if (dist > p.dd)
+                {
+                    p.dd = dist;
+                    p.tag = j;
+                }
+            }
+        }
+
+        for (Point& zz : cen) zz.x = zz.y = zz.z = zz.dd = 0;
+        for (Point& zz : points) cen[zz.tag].x += zz.x, cen[zz.tag].y += zz.y, cen[zz.tag].z += zz.z, cen[zz.tag].dd++;
+
+        for (Point& zz : cen) if (zz.dd) zz.x /= zz.dd, zz.y /= zz.dd, zz.z /= zz.dd;
+    }
+
+	for (Point& zz : cen) if(zz.dd) cout << zz.x << ' ' << zz.y << ' ' << zz.z << ' ' << zz.dd << '\n';
+    cout << endl;
+    for (Point& zz : points) cout << zz.x << ' ' << zz.y << ' ' << zz.z << ' ' << zz.tag << '\n';
+}
+
+int main()
+{
+    preproc();
+    proc();
+    return 0;
+}

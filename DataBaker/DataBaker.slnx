@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="DataBaker/DataBaker.vcxproj" Id="84ff1e75-a050-4ea7-8468-a18a4879b5b7" />
+</Solution>

@@ -1,0 +1,8 @@
+﻿  Kmean.cpp
+D:\Work\learningmachine\NumRecog\Kmean\Kmean\Kmean.cpp(25,21): warning C4244: 'initializing': conversion from 'long double' to '__int64', possible loss of data
+D:\Work\learningmachine\NumRecog\Kmean\Kmean\Kmean.cpp(78,25): warning C4244: '=': conversion from 'int' to '_Tp', possible loss of data
+D:\Work\learningmachine\NumRecog\Kmean\Kmean\Kmean.cpp(78,25): warning C4244:         with
+D:\Work\learningmachine\NumRecog\Kmean\Kmean\Kmean.cpp(78,25): warning C4244:         [
+D:\Work\learningmachine\NumRecog\Kmean\Kmean\Kmean.cpp(78,25): warning C4244:             _Tp=float
+D:\Work\learningmachine\NumRecog\Kmean\Kmean\Kmean.cpp(78,25): warning C4244:         ]
+  Kmean.vcxproj -> D:\Work\learningmachine\NumRecog\Kmean\x64\Debug\Kmean.exe

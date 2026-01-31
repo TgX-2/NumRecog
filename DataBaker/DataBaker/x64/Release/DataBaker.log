@@ -1,0 +1,2 @@
+﻿  DataBaker.cpp
+D:\Work\learningmachine\NumRecog\DataBaker\DataBaker\DataBaker.cpp(9,10): error C1083: Cannot open include file: 'opencv2/imgcodecs.hpp': No such file or directory
